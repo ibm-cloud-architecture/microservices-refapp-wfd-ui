@@ -1,14 +1,33 @@
-FROM websphere-liberty:webProfile7
-MAINTAINER IBM Java engineering at IBM Cloud
-COPY /target/liberty/wlp/usr/servers/defaultServer /config/
-# Install required features if not present, install APM Data Collector
-RUN installUtility install --acceptLicense defaultServer && installUtility install --acceptLicense apmDataCollector-7.4
-RUN /opt/ibm/wlp/usr/extension/liberty_dc/bin/config_liberty_dc.sh -silent /opt/ibm/wlp/usr/extension/liberty_dc/bin/silent_config_liberty_dc.txt
-# Upgrade to production license if URL to JAR provided
-ARG LICENSE_JAR_URL
-RUN \ 
-  if [ $LICENSE_JAR_URL ]; then \
-    wget $LICENSE_JAR_URL -O /tmp/license.jar \
-    && java -jar /tmp/license.jar -acceptLicense /opt/ibm \
-    && rm /tmp/license.jar; \
-  fi
+FROM ibmjava:8-jre
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends unzip \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install WebSphere Liberty
+ENV LIBERTY_VERSION 2017.9.0_1
+RUN LIBERTY_URL=$(wget -q -O - https://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/index.yml  | grep $LIBERTY_VERSION -A 3 | sed -n 's/\s*webProfile7:\s//p' | tr -d '\r')  \
+    && echo $LIBERTY_URL \
+    && wget -q $LIBERTY_URL -U UA-IBM-WebSphere-Liberty-Docker -O /tmp/wlp-beta.zip \
+    && unzip -q /tmp/wlp-beta.zip -d /opt/ibm \
+    && rm /tmp/wlp-beta.zip
+ENV PATH=/opt/ibm/wlp/bin:$PATH
+
+# Set Path Shortcuts
+ENV LOG_DIR=/logs \
+    WLP_OUTPUT_DIR=/opt/ibm/wlp/output
+RUN mkdir /logs \
+    && ln -s $WLP_OUTPUT_DIR/defaultServer /output \
+    && ln -s /opt/ibm/wlp/usr/servers/defaultServer /config
+
+# Configure WebSphere Liberty
+RUN /opt/ibm/wlp/bin/server create \
+    && rm -rf $WLP_OUTPUT_DIR/.classCache /output/workarea
+
+COPY target/liberty/wlp/usr/servers/defaultServer /config
+COPY target/liberty/wlp/usr/shared /opt/ibm/wlp/usr/shared
+# Install required features if not present
+RUN installUtility install --acceptLicense defaultServer
+EXPOSE 9089 9443
+
+CMD ["/opt/ibm/wlp/bin/server", "run", "defaultServer"]

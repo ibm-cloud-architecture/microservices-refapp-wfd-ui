@@ -81,69 +81,96 @@
                 </executions>
             </plugin>
             <plugin>
-            <groupId>com.github.eirslett</groupId>
-            <artifactId>frontend-maven-plugin</artifactId>
-            <version>1.0</version>
-            <configuration>
+               <artifactId>maven-clean-plugin</artifactId>
+               <version>2.5</version>
+               <configuration>
+               <filesets>
+                 <fileset>
+                   <directory>${project.basedir}/${angular.project.location}/dist</directory>
+                   <includes>
+                      <include>*</include>
+                   </includes>
+                 </fileset>
+               </filesets>
+               </configuration>
+             </plugin>
+             <plugin>
+               <groupId>com.github.eirslett</groupId>
+               <artifactId>frontend-maven-plugin</artifactId>
+               <version>1.0</version>
+               <configuration>
                 <workingDirectory>${angular.project.location}</workingDirectory>
                 <installDirectory>${angular.project.nodeinstallation}</installDirectory>
             </configuration>
-            <executions>
-                <!-- It will install nodejs and npm -->
-                <execution>
-                    <id>install node and npm</id>
-                    <goals>
-                        <goal>install-node-and-npm</goal>
-                    </goals>
-                    <configuration>
-                        <nodeVersion>v6.11.4</nodeVersion>
-                        <npmVersion>3.10.10</npmVersion>
-                    </configuration>
-                </execution>
-
-                <!-- It will execute command "npm install" inside "/e2e-angular2" directory -->
-                <execution>
-                    <id>npm install</id>
-                    <goals>
-                        <goal>npm</goal>
-                    </goals>
-                    <configuration>
-                        <arguments>install</arguments>
-                    </configuration>
-                </execution>
-                <!-- It will execute command "npm build" inside "/e2e-angular2" directory 
-                    to clean and create "/dist" directory -->
-                <execution>
-                    <id>npm build</id>
-                    <goals>
-                        <goal>npm</goal>
-                    </goals>
-                    <configuration>
-                        <arguments>run build</arguments>
-                    </configuration>
-                </execution>
-            </executions>
-            </plugin>
-            <plugin>
+               <executions>
+                 <execution>
+                   <id>install node and npm</id>
+                   <goals>
+                     <goal>install-node-and-npm</goal>
+                   </goals>
+                   <configuration>
+                     <nodeVersion>v6.11.4</nodeVersion>
+                     <npmVersion>3.10.10</npmVersion>
+                   </configuration>
+                 </execution>
+ 
+                 <execution>
+                   <id>npm install</id>
+                   <goals>
+                     <goal>npm</goal>
+                   </goals>
+                   <configuration>
+                     <arguments>install</arguments>
+                   </configuration>
+                 </execution>
+ 
+                 <execution>
+                   <id>prod</id>
+                   <goals>
+                     <goal>npm</goal>
+                   </goals>
+                   <configuration>
+                     <arguments>run-script prod</arguments>
+                   </configuration>
+                   <phase>generate-resources</phase>
+                  </execution>
+                 </executions>
+                </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <version>2.6</version>
+                        <configuration>
+                            <webResources>
+                                <resource>
+                                    <!-- this is relative to the pom.xml directory -->
+                                    <directory>${project.basedir}/${angular.project.location}/dist/</directory>
+                                </resource>
+                            </webResources>
+                        </configuration>
+                    </plugin>
+             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>2.7</version>
                 <executions>
-                <execution>
-                    <id>default-copy-resources</id>
-                    <phase>process-resources</phase>
-                    <goals>
-                        <goal>copy-resources</goal>
-                    </goals>
-                    <configuration>
-                        <overwrite>true</overwrite>
-                        <outputDirectory>${project.build.directory}/liberty/wlp/usr/servers/defaultServer/dropins/</outputDirectory>
-                        <resources>
+                    <execution>
+                        <id>copy-app</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                          <outputDirectory>${project.build.directory}/liberty/wlp/usr/servers/defaultServer/dropins</outputDirectory>
+                          <resources>
                             <resource>
-                                <directory>${project.basedir}/${angular.project.location}/dist</directory>
+                              <directory>${project.build.directory}</directory>
+                              <includes>
+                                <include>${project.artifactId}-${project.version}.war</include>
+                              </includes>
                             </resource>
-                        </resources>
-                    </configuration>
+                          </resources>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>

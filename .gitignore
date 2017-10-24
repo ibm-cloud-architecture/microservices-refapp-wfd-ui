@@ -14,3 +14,4 @@
 /src/main/liberty/config/server.env
 /node_installation
 /.apt_generated/
+/bin/

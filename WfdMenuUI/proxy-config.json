@@ -1,6 +1,6 @@
 {
   "/items": {
-    "target": "http://localhost:9089",
+    "target": "http://localhost:9080",
     "secure": false
   }
 }

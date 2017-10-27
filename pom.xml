@@ -13,12 +13,12 @@
         <maven.compiler.target>1.8</maven.compiler.target>
 
         <app.name>WfdFrontEnd</app.name>
-        <testServerHttpPort>9089</testServerHttpPort>
+        <testServerHttpPort>9080</testServerHttpPort>
         <testServerHttpsPort>9443</testServerHttpsPort>
         <warContext>${app.name}</warContext>
         <package.file>${project.build.directory}/${project.artifactId}-${project.version}.zip</package.file>
         <packaging.type>usr</packaging.type>
-        
+
         <angular.project.location>WfdMenuUI</angular.project.location>
         <angular.project.nodeinstallation>node_installation</angular.project.nodeinstallation>
     </properties>
@@ -113,7 +113,7 @@
                      <npmVersion>3.10.10</npmVersion>
                    </configuration>
                  </execution>
- 
+
                  <execution>
                    <id>npm install</id>
                    <goals>
@@ -123,7 +123,7 @@
                      <arguments>install</arguments>
                    </configuration>
                  </execution>
- 
+
                  <execution>
                    <id>prod</id>
                    <goals>

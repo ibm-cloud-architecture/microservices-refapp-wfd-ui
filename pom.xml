@@ -21,6 +21,8 @@
 
         <angular.project.location>WfdMenuUI</angular.project.location>
         <angular.project.nodeinstallation>node_installation</angular.project.nodeinstallation>
+        <!--The URL should be replaced-->
+        <menu.service.url>http://localhost:9084/WfdMenu/rest/</menu.service.url>
     </properties>
 
     <dependencies>
@@ -53,15 +55,6 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>2.6</version>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                    <packagingExcludes>pom.xml</packagingExcludes>
-                </configuration>
-            </plugin>
             <!-- Plugin to run unit tests -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -141,10 +134,13 @@
                         <artifactId>maven-war-plugin</artifactId>
                         <version>2.6</version>
                         <configuration>
+                            <failOnMissingWebXml>false</failOnMissingWebXml>
+                            <packagingExcludes>pom.xml</packagingExcludes>
                             <webResources>
                                 <resource>
                                     <!-- this is relative to the pom.xml directory -->
                                     <directory>${project.basedir}/${angular.project.location}/dist/</directory>
+                                    <filtering>true</filtering>
                                 </resource>
                             </webResources>
                         </configuration>
@@ -258,6 +254,9 @@
                 <configuration>
                     <summaryFile>${project.build.directory}/test-reports/it/failsafe-summary.xml</summaryFile>
                     <reportsDirectory>${project.build.directory}/test-reports/it</reportsDirectory>
+                    <systemPropertyVariables>
+                        <liberty.test.group.service.url>${menu.service.url}</liberty.test.group.service.url>
+                    </systemPropertyVariables>
                 </configuration>
             </plugin>
         </plugins>

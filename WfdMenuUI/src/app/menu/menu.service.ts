@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class MenuService {
 
-private baseUrl = 'http://localhost:9180/WfdMenu/rest'; //TODO This needs to be parameterized
+private baseUrl = '${menu.service.url}';
 
   constructor(private http: Http) {
   }
@@ -27,13 +27,11 @@ private baseUrl = 'http://localhost:9180/WfdMenu/rest'; //TODO This needs to be 
   }
 }
 function mapMenus(response: Response): Menu[] {
- // console.log(response.json());
   return response.json().map(toMenu);
 }
 function mapMenu(response: Response): Menu {
   return toMenu(response.json());
 }
 function toMenu(r: any): Menu {
-  // console.log(r);
   return r;
 }

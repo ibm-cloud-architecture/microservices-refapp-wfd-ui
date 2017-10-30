@@ -22,7 +22,8 @@
         <angular.project.location>WfdMenuUI</angular.project.location>
         <angular.project.nodeinstallation>node_installation</angular.project.nodeinstallation>
         <!--The URL should be replaced-->
-        <menu.service.url>http://localhost:9084/WfdMenu/rest/</menu.service.url>
+        <menu.service.url>localhost</menu.service.url>
+        <menu.service.port>9180</menu.service.url>
     </properties>
 
     <dependencies>
@@ -262,7 +263,7 @@
                     <summaryFile>${project.build.directory}/test-reports/it/failsafe-summary.xml</summaryFile>
                     <reportsDirectory>${project.build.directory}/test-reports/it</reportsDirectory>
                     <systemPropertyVariables>
-                        <liberty.test.group.service.url>${menu.service.url}</liberty.test.group.service.url>
+                        <liberty.test.group.service.url>http://${menu.service.url}:${menu.service.port}/WfdMenu/rest/</liberty.test.group.service.url>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>

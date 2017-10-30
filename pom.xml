@@ -23,7 +23,7 @@
         <angular.project.nodeinstallation>node_installation</angular.project.nodeinstallation>
         <!--The URL should be replaced-->
         <menu.service.url>localhost</menu.service.url>
-        <menu.service.port>9180</menu.service.url>
+        <menu.service.port>9180</menu.service.port>
     </properties>
 
     <dependencies>

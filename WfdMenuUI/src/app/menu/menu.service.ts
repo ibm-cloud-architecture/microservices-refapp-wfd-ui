@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class MenuService {
 
-private baseUrl = '${menu.service.url}';
+private baseUrl = 'http://${menu.service.url}:${menu.service.port}/WfdMenu/rest/';
 
   constructor(private http: Http) {
   }

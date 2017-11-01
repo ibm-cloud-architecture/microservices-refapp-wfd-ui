@@ -20,6 +20,10 @@ eureka:
     hostname: ${vcap.application.uris[0]:${spring.cloud.client.ipAddress}}
     preferIpAddress: true
 
+wfd:
+  menu:
+    url: http://menu-service/menu
+
 ---
 spring:
   profiles: cloud

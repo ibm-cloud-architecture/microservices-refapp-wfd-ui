@@ -22,6 +22,12 @@ import org.springframework.cloud.sleuth.SpanAccessor;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+
+@Configuration
+@ConfigurationProperties(prefix = "wfd.menu")
 @Controller
 public class MenuController {
 
@@ -33,11 +39,14 @@ public class MenuController {
   @Autowired
   private SpanAccessor spanAccessor;
 
+  @Value("${wfd.menu.url}")
+  private String menu;
+
   @RequestMapping("/")
   @HystrixCommand(fallbackMethod="getDefaultMenu", groupKey="WhatsForDinnerUI", commandKey="GetMenuForUI")
   public String getMenuForIndex(Model model){
 
-    String menuString = this.restTemplate.getForObject("http://menu-service/menu", String.class);
+    String menuString = this.restTemplate.getForObject(this.menu, String.class);
     log.info(menuString);
 
     BasicJsonParser jsonParser = new BasicJsonParser();

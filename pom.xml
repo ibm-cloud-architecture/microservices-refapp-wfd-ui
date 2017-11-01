@@ -21,9 +21,8 @@
 
         <angular.project.location>WfdMenuUI</angular.project.location>
         <angular.project.nodeinstallation>node_installation</angular.project.nodeinstallation>
-        <!--The URL should be replaced-->
-        <menu.service.url>localhost</menu.service.url>
-        <menu.service.port>9180</menu.service.port>
+
+        <npm.env.target>prod</npm.env.target>
     </properties>
 
     <dependencies>
@@ -131,7 +130,7 @@
                      <goal>npm</goal>
                    </goals>
                    <configuration>
-                     <arguments>run-script prod</arguments>
+                     <arguments>run-script ${npm.env.target}</arguments>
                    </configuration>
                    <phase>generate-resources</phase>
                   </execution>

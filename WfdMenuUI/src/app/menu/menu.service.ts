@@ -3,11 +3,12 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class MenuService {
 
-private baseUrl = 'http://${menu.service.url}:${menu.service.port}/WfdMenu/rest/';
+private baseUrl = `${environment.api}`;
 
   constructor(private http: Http) {
   }

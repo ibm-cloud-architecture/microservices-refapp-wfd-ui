@@ -21,7 +21,7 @@ spec:
 {{ else }}
         readinessProbe:
           httpGet:
-            path: /refarchcloudnativewfdui/
+            path: /WfdFrontEnd/
             port: 9080
           initialDelaySeconds: 20
 {{ end }}

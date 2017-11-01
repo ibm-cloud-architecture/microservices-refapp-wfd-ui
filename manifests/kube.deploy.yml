@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: "refarchcloudnativewfdui-service"
+  name: "wfdfrontend-service"
 spec:
   # if your cluster supports it, uncomment the following to automatically create
   # an external load-balanced IP for the frontend service.
@@ -15,12 +15,12 @@ spec:
     port: 9443
 
   selector:
-    app: "refarchcloudnativewfdui-selector"
+    app: "wfdfrontend-selector"
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: "refarchcloudnativewfdui-deployment"
+  name: "wfdfrontend-deployment"
 spec:
   # this replicas value is default
   # modify it according to your case
@@ -28,14 +28,14 @@ spec:
   template:
     metadata:
       labels:
-        app: "refarchcloudnativewfdui-selector"
+        app: "wfdfrontend-selector"
     spec:
       containers:
-      - name: refarchcloudnativewfdui
-        image: refarchcloudnativewfdui:latest
+      - name: wfdfrontend
+        image: wfdfrontend:latest
         readinessProbe:
           httpGet:
-            path: /refarchcloudnativewfdui/health
+            path: /WfdFrontEnd/health
             port: 9080
           initialDelaySeconds: 20
         # resources:

@@ -43,10 +43,10 @@ public class MenuController {
   private String menu;
 
   @RequestMapping("/")
-  @HystrixCommand(fallbackMethod="getDefaultMenu", groupKey="WhatsForDinnerUI", commandKey="GetMenuForUI")
   public String getMenuForIndex(Model model){
 
-    String menuString = this.restTemplate.getForObject(this.menu, String.class);
+    //String menuString = this.restTemplate.getForObject(this.menu, String.class);
+    String menuString = this.getMenu();
     log.info(menuString);
 
     BasicJsonParser jsonParser = new BasicJsonParser();
@@ -70,8 +70,16 @@ public class MenuController {
 
     return "index";
   }
+  @HystrixCommand(fallbackMethod="getDefaultMenu", groupKey="WhatsForDinnerUI", commandKey="GetMenuForUI")
+  public String getMenu(){
+    return this.restTemplate.getForObject(this.menu, String.class);
+  }
 
-  public String getDefaultMenu(Model model){
+  public String getDefaultMenu(){
+    return "{entrees:{menu:[Hamburger,Hot Dog,Spaghetti]},desserts:{menu:[Cookies,Candy,Cake]},appetizers:{menu:[Chips,Salsa,Bruschetta]}}";
+  }
+
+  /*public String getDefaultMenu(Model model){
 
     List<String> appetizerList = new ArrayList<String>();
                  appetizerList.add("Chips");
@@ -95,6 +103,6 @@ public class MenuController {
     model.addAttribute("dessertOptions", dessertList);
 
     return "index";
-  }
+  }*/
 
 }

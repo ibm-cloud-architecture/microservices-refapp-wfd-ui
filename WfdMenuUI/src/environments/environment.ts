@@ -5,5 +5,5 @@
 
 export const environment = {
   production: false,
-  api: 'http://refarchcloudnativewfdmenu-service:9080/WfdMenu/rest/'
+  api: 'http://refarchcloudnativewfdmenu-service:9080/WfdMenu/rest'
 };

@@ -14,6 +14,7 @@ private baseUrl = `${environment.api}`;
   }
 
   getAll(): Observable<Menu[]> {
+       console.log(this.baseUrl);
        const menu$ =
        this.http
       .get(`${this.baseUrl}/menu`, {headers: this.getHeaders()})

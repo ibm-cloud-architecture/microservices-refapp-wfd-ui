@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api: 'http://refarchcloudnativewfdmenu-service.purplecompute:9080/WfdMenu/rest' 
+  api: 'http://169.46.44.171:31897/WfdMenu/rest' 
 };

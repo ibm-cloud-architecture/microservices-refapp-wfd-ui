@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+  name: {{  .Chart.Name }}-ingress
+  namespace: default
+spec:
+  rules:
+  - host:
+    http:
+      paths:
+      - backend:
+          serviceName: {{  .Chart.Name }}-service
+          servicePort: {{ .Values.service.servicePort }}
+        path: /whats-for-dinner

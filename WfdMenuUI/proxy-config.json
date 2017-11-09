@@ -1,6 +1,0 @@
-{
-  "/items": {
-    "target": "http://refarchcloudnativewfdmenu-service.purplecompute:9080",
-    "secure": false
-  }
-}

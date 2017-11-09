@@ -19,7 +19,7 @@ eureka:
 
 wfd:
   menu:
-    url: http://wfdmenu-service/menu
+    url: http://menu-service/menu
 
 ---
 #spring:

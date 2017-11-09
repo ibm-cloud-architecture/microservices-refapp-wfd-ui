@@ -76,7 +76,7 @@ public class MenuController {
   }
 
   public String getDefaultMenu(){
-    return "{entrees:{menu:[Hamburger,Hot Dog,Spaghetti]},desserts:{menu:[Cookies,Candy,Cake]},appetizers:{menu:[Chips,Salsa,Bruschetta]}}";
+    return "{entrees:{menu:[Hamburger,Hot Dog,Spaghetti]},desserts:{menu:[Cookies,Candy,Cake]},appetizers:{menu:[Chips-default,Salsa-default,Bruschetta-default]}}";
   }
 
   /*public String getDefaultMenu(Model model){

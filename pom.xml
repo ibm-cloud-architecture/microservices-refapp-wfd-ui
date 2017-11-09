@@ -15,11 +15,14 @@
     </parent>
 
     <properties>
-      <maven.test.skip>true</maven.test.skip>
       <java.version>1.8</java.version>
     </properties>
 
     <dependencies>
+      <dependency>
+          <groupId>org.springframework.cloud</groupId>
+          <artifactId>spring-cloud-starter-config</artifactId>
+      </dependency>
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-sleuth-zipkin</artifactId>
@@ -70,7 +73,7 @@
       <dependency>
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
-        <version>4.8.1</version>
+        <version>4.12</version>
         <scope>test</scope>
       </dependency>
     </dependencies>

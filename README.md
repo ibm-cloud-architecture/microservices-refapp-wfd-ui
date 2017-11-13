@@ -460,3 +460,7 @@ wfdui     10.0.0.135   <nodes>       3000:31744/TCP   1m
 ```
 
 In the above case, the access url will be `http://192.168.99.100:31744/`.
+
+<p align="center">
+    <img src="https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd/blob/microprofile/static/imgs/ui_minikube.png">
+</p>

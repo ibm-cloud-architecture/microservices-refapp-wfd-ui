@@ -3,7 +3,7 @@ kind: Ingress
 metadata:
   annotations:
     ingress.kubernetes.io/rewrite-target: /
-  name: {{  .Chart.Name }}-ingress
+  name: {{ .Release.Name }}-{{  .Chart.Name }}
   namespace: default
 spec:
   rules:
@@ -11,6 +11,6 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: {{  .Chart.Name }}-service
+          serviceName: {{ .Release.Name }}-{{ .Chart.Name }}
           servicePort: {{ .Values.service.servicePort }}
         path: /whats-for-dinner

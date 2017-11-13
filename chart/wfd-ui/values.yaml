@@ -17,4 +17,5 @@ service:
   type: ClusterIP
   servicePort: 8181
 menu:
-  url: "http://wfdmenu-service:8180/menu"
+  url:
+    core: "wfd-menu:8180/menu"

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>projects</groupId>
+    <artifactId>WfdUi</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <app.name>WfdUi</app.name>
+        <warContext>${app.name}</warContext>
+    </properties>
+
+    <build>
+      <plugins>
+       <plugin>
+               <groupId>com.github.eirslett</groupId>
+               <artifactId>frontend-maven-plugin</artifactId>
+               <version>1.0</version>
+               <executions>
+
+                 <execution>
+                   <id>install node and npm</id>
+                   <goals>
+                     <goal>install-node-and-npm</goal>
+                   </goals>
+                   <configuration>
+                     <nodeVersion>v6.11.4</nodeVersion>
+                     <npmVersion>3.10.10</npmVersion>
+                   </configuration>
+                 </execution>
+
+                 <execution>
+                   <id>npm install</id>
+                   <goals>
+                     <goal>npm</goal>
+                   </goals>
+                   <configuration>
+                     <arguments>install</arguments>
+                   </configuration>
+                 </execution>
+
+                </executions>
+        </plugin>
+
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>2.6</version>
+            <configuration>
+                <failOnMissingWebXml>false</failOnMissingWebXml>
+                <packagingExcludes>pom.xml</packagingExcludes>
+                <webResources>
+                    <resource>
+                        <!-- this is relative to the pom.xml directory -->
+                        <directory>${project.basedir}</directory>
+                        <filtering>true</filtering>
+                    </resource>
+                </webResources>
+            </configuration>
+        </plugin>
+
+        </plugins>
+    </build>
+
+</project>

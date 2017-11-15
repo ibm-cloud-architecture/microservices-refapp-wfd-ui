@@ -24,7 +24,7 @@ This repository contains the **Java MicroProfile** implementation of the **UI Se
 3. [Implementation](#implementation)
     1. [Pugjs](#pugjs)
     2. [Maven build](#maven-build)
-        - [Running the application locally using Maven Build](#running-the-application-locally-using-Maven-Build)
+        - [Running the application locally](#running-the-application-locally)
     3. [Docker file](#docker-file)
         - [Running the application locally in a docker container](#running-the-application-locally-in-a-docker-container)
     4. [Microservice Builder](#microservice-builder)
@@ -82,16 +82,12 @@ Maven is a project management tool that is based on the Project Object Model (PO
    If this runs successfully, you will be able to see the below messages.
 
 ```
-[INFO]
-[INFO] --- frontend-maven-plugin:1.0:npm (npm install) @ WfdUI ---
-[INFO] Running 'npm install' in /Users/Hemankita.Perabathini@ibm.com/PurpleCompute/Microprofile/WhatsForDinner/refarch-cloudnative-wfd-ui
-[INFO]
-[INFO] --- frontend-maven-plugin:1.0:npm (start) @ WfdUI ---
-[INFO] Running 'npm run-script start' in /Users/Hemankita.Perabathini@ibm.com/PurpleCompute/Microprofile/WhatsForDinner/refarch-cloudnative-wfd-ui
-[INFO]
-[INFO] > wfdfrontend@0.0.0 start /Users/Hemankita.Perabathini@ibm.com/PurpleCompute/Microprofile/WhatsForDinner/refarch-cloudnative-wfd-ui
-[INFO] > node ./bin/www
-[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 18.980 s
+[INFO] Finished at: 2017-11-14T19:12:24-06:00
+[INFO] Final Memory: 29M/843M
 ```
 
 5. Before doing the above, make sure [Menu](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd-menu/tree/microprofile) service along with [Appetizer](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd-appetizer/tree/microprofile), [Dessert](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd-dessert/tree/microprofile) and [Entree](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd-entree/tree/microprofile) services is running. If you are running all the services locally on your system, you need to modify the ports in the respective POM.xml and run the server.
@@ -116,7 +112,9 @@ Let's say the appetizer service is running on 9081, dessert service is running o
 
 You can find a greater detail on how to run these services locally [here](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd/blob/microprofile/local_readme.md).
 
-6. Now, go to your browser and access the UI at http://localhost:3000/.
+6. Run `npm start`
+
+Now, go to your browser and access the UI at http://localhost:3000/.
 
 <p align="center">
     <img src="https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd/blob/microprofile/static/imgs/ui.png">

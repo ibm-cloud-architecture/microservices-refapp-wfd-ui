@@ -114,6 +114,8 @@ You can find a greater detail on how to run these services locally [here](https:
 
 6. Run `npm start`
 
+It starts serving your application.
+
 Now, go to your browser and access the UI at http://localhost:3000/.
 
 <p align="center">
@@ -121,6 +123,8 @@ Now, go to your browser and access the UI at http://localhost:3000/.
 </p>
 
    Access URL : `http://<HOST>:<PORT>`
+
+7. To come out or stop the application, press Crtl+C.
 
 #### Docker file
 
@@ -468,7 +472,7 @@ In the above case, the access url will be `http://192.168.99.100:31744/`.
 
 ##### [IBM Cloud Private](https://www.ibm.com/cloud-computing/solutions/private-cloud/)
 
-IBM Private Cloud is has all the advantages of public cloud but is dedicated to single organization. You can have your own security requirements and customize the environment as well. Basically it has tight security and gives you more control along with scalability and easy to deploy options. You can run it externally or brhind the firewall of your organization.
+IBM Private Cloud is has all the advantages of public cloud but is dedicated to single organization. You can have your own security requirements and customize the environment as well. Basically it has tight security and gives you more control along with scalability and easy to deploy options. You can run it externally or behind the firewall of your organization.
 
 Basically this is an on-premise platform.
 1. Includes docker container manager
@@ -481,7 +485,7 @@ Microservice builder has an option to deploy with IBM Cloud Private. You can set
 
 Microservice Builder runs on a Jenkins pipeline. Basically Jenkins runs in a docker container and it is deployed on Kubernetes using helm.
 
-This jenkins should be integrated with the Github. The repository to which you push the code shold be integrated to Microservice Builder pipeline through Github. Then only Microservice Builder will be able to pick your code.
+This jenkins should be integrated with the Github. The repository to which you push the code should be integrated to Microservice Builder pipeline through Github. Then only Microservice Builder will be able to pick your code.
 
 To find instructions on how to set your Microservice Builder pipeline up, click [here](https://www.ibm.com/support/knowledgecenter/en/SS5PWC/pipeline.html).
 

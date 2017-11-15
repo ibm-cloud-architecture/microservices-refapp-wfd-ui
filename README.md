@@ -38,8 +38,7 @@ This repository contains the **Java MicroProfile** implementation of the **UI Se
 
 This project demonstrates the implementation of UI Microservice. The UI microservice interacts with the [Menu](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd-menu/tree/microprofile) microservices and displays the front end.
 
-- Based on [Angular 4](https://angular.io/).
-- Used [MicroProfile](https://microprofile.io/).
+- Based on [Pugjs](https://pugjs.org/api/getting-started.html).
 - Integrated with the [MicroService Builder](https://developer.ibm.com/microservice-builder/).
 - Deployment options for local, Docker Container-based runtimes, Minikube environment and ICP/BMX.
 

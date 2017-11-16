@@ -116,7 +116,7 @@ You can find a greater detail on how to run these services locally [here](https:
 
 It starts serving your application.
 
-Now, go to your browser and access the UI at http://localhost:3000/.
+Now, go to your browser and access the UI at `http://localhost:3000/`.
 
 <p align="center">
     <img src="https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd/blob/microprofile/static/imgs/ui.png">
@@ -231,7 +231,7 @@ When it is done, you will see the following output.
 [AUDIT   ] CWWKF0012I: The server installed the following features: [microProfile-1.2, mpFaultTolerance-1.0, servlet-3.1, ssl-1.0, jndi-1.0, mpHealth-1.0, appSecurity-2.0, jsonp-1.0, mpConfig-1.1, jaxrs-2.0, jaxrsClient-2.0, concurrent-1.0, jwt-1.0, mpMetrics-1.0, mpJwt-1.0, json-1.0, cdi-1.2, distributedMap-1.0].
 [AUDIT   ] CWWKF0011I: The server defaultServer is ready to run a smarter planet.
 ```
-7. Now, view the UI at http://localhost:9080/WfdFrontEnd/.
+7. Now, view the UI at `http://localhost:3000/`.
 
 <p align="center">
     <img src="https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd/blob/microprofile/static/imgs/ui.png">

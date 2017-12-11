@@ -294,7 +294,7 @@ Kubectl is now configured to use the cluster.
 If it is successful, you will see the below output.
 
 ```
-$HELM_HOME has been configured at /Users/Hemankita.Perabathini@ibm.com/.helm.
+$HELM_HOME has been configured at /Users/user@ibm.com/.helm.
 
 Tiller (the helm server side component) has been installed into your Kubernetes Cluster.
 Happy Helming!
@@ -400,7 +400,7 @@ You will see the output similar to this.
 ```
 export DOCKER_TLS_VERIFY="1"
 export DOCKER_HOST="tcp://192.168.99.100:2376"
-export DOCKER_CERT_PATH="/Users/Hemankita.Perabathini@ibm.com/.minikube/certs"
+export DOCKER_CERT_PATH="/Users/user@ibm.com/.minikube/certs"
 export DOCKER_API_VERSION="1.23"
 # Run this command to configure your shell:
 # eval $(minikube docker-env)

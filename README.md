@@ -23,16 +23,16 @@ This repository contains the **Java MicroProfile** implementation of the **UI Se
 2. [How it works](#how-it-works)
 3. [Implementation](#implementation)
     1. [Pugjs](#pugjs)
-    2. [Maven build](#maven-build)
-        - [Running the application locally](#running-the-application-locally)
-    3. [Docker file](#docker-file)
-        - [Running the application locally in a docker container](#running-the-application-locally-in-a-docker-container)
-    4. [Microservice Builder](#microservice-builder)
-        1. [Minikube development Environment](#minikube-development-environment)
-           - [Running the application on Minikube](#running-the-application-on-minikube)
-        2. [IBM Cloud Private](#ibm-cloud-private)
-           - [Running the application on IBM Cloud Private](#running-the-application-on-ibm-cloud-private)
-4. [References](#references)
+4. [Features and App details](#features)
+6. [Building the app](#building-the-app)
+7. [Running the app and stopping it](#running-the-app-and-stopping-it)
+    1. [Pre-requisites](#pre-requisites)
+    2. [Locally in JVM](#locally-in-jvm)
+    3. [Locally in Containers](#locally-in-containers)
+    4. [Locally in Minikube](#locally-in-minikube)
+    5. [Remotely in ICP](#remotely-in-icp)
+8. [DevOps Strategy](#devops-strategy)
+9. [References](#references)
 
 ### Introduction
 
@@ -46,11 +46,11 @@ This project demonstrates the implementation of UI Microservice. The UI microser
 
 UI Microservice serves [**What's For Dinner**](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd), Microservice-based reference application. Though it is a part of a bigger application, UI service is itself an application in turn that displays the front end for the [**What's For Dinner**](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd) application. This service interacts with the backend [Menu](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd-menu/tree/microprofile) service and displays the menu on the user interface.
 
+### Implementation
+
 #### Pre-requisite
 
 For the UI microservice to work, [Menu](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd-menu/tree/microprofile) microservice along with its downstream services [Appetizer](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd-appetizer/tree/microprofile), [Dessert](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd-dessert/tree/microprofile) and [Entree](https://github.com/ibm-cloud-architecture/refarch-cloudnative-wfd-entree/tree/microprofile) must be running.
-
-### Implementation
 
 #### [Pugjs](https://pugjs.org/api/getting-started.html)
 
